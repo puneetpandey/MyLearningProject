@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+
+<p><%= link_to "View Comments", "javascript:void(0);", id: "comments", remote: true %></p>
+
+<div id="comment"></div>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'FB Share', '#', id: 'fb-share' %> |
+<%= link_to 'Back', posts_path %>
+
+<%= content_for :page_js do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $.ajaxSetup({ cache: true });
+      $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+        FB.init({
+          appId: '1628563974069172',
+          version: 'v2.4' // or v2.0, v2.1, v2.2, v2.3
+        });
+        $('#loginbutton,#feedbutton').removeAttr('disabled');
+        FB.getLoginStatus(updateStatusCallback);
+      });
+    });
+  </script>
+<% end %>
+
+<script>
+  $('a#fb-share').click(function(){
+    FB.ui({
+      method: 'feed',
+      href: 'http://puneetpandey.com',
+      caption: 'An example caption',
+    }, function(response){});
+  });
+
+  $(document).ready(function(){
+    $("a#comments").click(function(){
+      $.ajax({
+        url: '<%= show_comments_post_path(@post) %>',
+        type: 'GET',
+        dataType: 'script',
+        success: function(){}
+      });
+    });
+  });
+</script>

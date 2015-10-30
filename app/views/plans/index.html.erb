@@ -1,0 +1,46 @@
+<h1>Plans</h1>
+
+<%= form_tag(plans_path, {method: :post, multipart: true}) do %>
+
+  <h3>Styles</h3>
+  <table>
+    <tr>
+      <td><%= check_box_tag 'styles[]', 'Style 1' %>Style 1</td>
+      <td><%= check_box_tag 'styles[]', 'Style 2' %>Style 2</td>
+    </tr>
+    <tr>
+      <td><%= check_box_tag 'styles[]', 'Style 3' %>Style 3</td>
+      <td><%= check_box_tag 'styles[]', 'Style 4' %>Style 4</td>
+    </tr>
+  </table>
+  <%= file_field_tag 'plan_styles_file', accept: 'text/csv' %>
+
+  <h3>Collections</h3>
+  <table>
+    <tr>
+      <td><%= check_box_tag 'collectios[]', 'Collection 1' %>Collection 1</td>
+      <td><%= check_box_tag 'collectios[]', 'Collection 2' %>Collection 2</td>
+    </tr>
+    <tr>
+      <td><%= check_box_tag 'collectios[]', 'Collection 3' %>Collection 3</td>
+      <td><%= check_box_tag 'collectios[]', 'Collection 4' %>Collection 4</td>
+    </tr>
+  </table>
+  <%= file_field_tag 'plan_collections_file', accept: 'text/csv' %>
+
+  <h3>Features</h3>
+  <table>
+    <tr>
+      <td><%= check_box_tag 'features[]', 'Feature 1' %>Feature 1</td>
+      <td><%= check_box_tag 'features[]', 'Feature 2' %>Feature 2</td>
+    </tr>
+    <tr>
+      <td><%= check_box_tag 'features[]', 'Feature 3' %>Feature 3</td>
+      <td><%= check_box_tag 'features[]', 'Feature 4' %>Feature 4</td>
+    </tr>
+  </table>
+  <%= file_field_tag 'plan_features_file', accept: 'text/csv' %>
+  <br /><br /><br />
+
+  <%= submit_tag 'Save' %>
+<% end %>

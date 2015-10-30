@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'FB Share', '#', id: 'fb-share' %> |
+<%= link_to 'Back', posts_path %>
+
+<script>
+  $('a#fb-share').click(function(){
+    FB.ui({
+      method: 'feed',
+      href: 'https://arch-design-dev.herokuapp.com/planspage',
+      caption: 'An example caption',
+    }, function(response){});
+  });
+</script>
