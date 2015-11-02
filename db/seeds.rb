@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 Post.delete_all
 
 new_posts = [
@@ -31,4 +24,37 @@ new_plans = [
 
 new_plans.each do | plan_params |
   Plan.create plan_params
+end
+
+new_styles = [
+  { name: 'Style 1' },
+  { name: 'Style 2' },
+  { name: 'Style 3' },
+  { name: 'Style 4' }
+]
+
+new_styles.each do | style_param |
+  Style.create(style_param)
+end
+
+new_collections = [
+  { name: 'Collection 1' },
+  { name: 'Collection 2' },
+  { name: 'Collection 3' },
+  { name: 'Collection 4' }
+]
+
+new_collections.each do | collection_param |
+  Collection.create collection_param
+end
+
+new_features = [
+  { name: 'Feature 1' },
+  { name: 'Feature 2' },
+  { name: 'Feature 3' },
+  { name: 'Feature 4' }
+]
+
+new_features.each do | feature_param |
+  Feature.create feature_param
 end

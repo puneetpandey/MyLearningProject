@@ -1,7 +1,7 @@
 class PlansController < ApplicationController
 
   def create
-    @plan = Plan.bulk_apply params[:styles], params[:plan_styles_file], params[:collectios], params[:plan_collections_file], params[:features], params[:plan_features_file]
+    @plan = Plan.bulk_apply params[:plan], params[:plan_styles_file], params[:plan_collections_file], params[:plan_features_file]
 
     respond_to do | format |
       if @plan.first
@@ -14,4 +14,8 @@ class PlansController < ApplicationController
     end
   end
 
+private
+  def plan_params
+    params.require(:plan).permit({style_ids: []}, {collection_ids: []}, {feature_ids: []})
+  end
 end
