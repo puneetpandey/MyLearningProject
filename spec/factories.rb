@@ -1,4 +1,6 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :address do
+    
+  end
 
   factory :feature do
     name "MyString"

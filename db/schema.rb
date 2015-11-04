@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151030064046) do
+ActiveRecord::Schema.define(version: 20151104104402) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "post_id",        limit: 4
+    t.text     "address_line_1", limit: 65535
+    t.text     "address_line_2", limit: 65535
+    t.string   "city",           limit: 255
+    t.string   "state",          limit: 255
+    t.integer  "pincode",        limit: 4
+    t.string   "address_type",   limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "addresses", ["city"], name: "index_addresses_on_city", using: :btree
+  add_index "addresses", ["state"], name: "index_addresses_on_state", using: :btree
 
   create_table "collections", force: :cascade do |t|
     t.string   "name",       limit: 255
